@@ -9,6 +9,10 @@
       font-family: Arial, sans-serif;
       text-align: center;
       margin: 50px;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      color: #333;
     }
     input[type="text"] {
       padding: 10px;
@@ -23,6 +27,7 @@
       color: white;
       border-radius: 5px;
       cursor: pointer;
+      margin-left: 10px;
     }
     button:hover {
       background-color: #1c5ec9;
@@ -32,11 +37,13 @@
 <body>
   <h1>🔎 Search the Website</h1>
 
-  <!-- Google Search Form -->
+  <!-- Google Custom Site Search -->
   <form method="get" action="https://www.google.com/search" target="_blank">
     <input type="text" name="q" placeholder="Search Balochnova.ai">
-    <input type="hidden" name="sitesearch" value="balochnova.github.io">
+    <!-- Yeh line sirf tumhari website ke andar hi search karegi -->
+    <input type="hidden" name="sitesearch" value="balochnova.github.io/Balochnova.sight">
     <button type="submit">Search</button>
   </form>
+
 </body>
 </html>
