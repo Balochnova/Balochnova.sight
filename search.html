@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search - Balochnova.ai</title>
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin:20px; }
+    h2 { color:#2F80ED; }
+    #searchBox { width:100%; padding:12px; font-size:16px; margin-bottom:20px; border-radius:8px; border:1px solid #ccc; }
+    .result { padding:15px; margin-bottom:12px; border:1px solid #ddd; border-radius:10px; background:#f9f9f9; }
+    .result h3 { margin:0; color:#9B51E0; }
+    .result a { text-decoration:none; color:#2F80ED; font-weight:bold; }
+  </style>
+</head>
+<body>
+  <h2>🔍 Search the Website</h2>
+  <input type="text" id="searchBox" placeholder="Type to search...">
+  <div id="results"></div>
+
+  <script>
+    const data = [
+      { title: "About Us", body: "Learn more about our vision, AI innovation and rocket journey", url: "about.html" },
+      { title: "Services", body: "We provide Web Design, SEO, Branding and AI-powered digital solutions", url: "services.html" },
+      { title: "Contact", body: "Get in touch via email balochnova351@gmail.com, call us at +92 336 4819672 or visit us in Kot Addu, Pakistan", url: "contact.html" }
+    ];
+
+    const fuse = new Fuse(data, { keys: ["title", "body"], threshold: 0.4 });
+
+    document.getElementById("searchBox").addEventListener("input", function() {
+      const query = this.value;
+      const results = fuse.search(query);
+      const resultsDiv = document.getElementById("results");
+      resultsDiv.innerHTML = "";
+
+      if (query.trim() === "") return;
+      if (results.length === 0) {
+        resultsDiv.innerHTML = "<p>No results found</p>";
+        return;
+      }
+
+      results.forEach(r => {
+        resultsDiv.innerHTML += `
+          <div class="result">
+            <h3>${r.item.title}</h3>
+            <p>${r.item.body}</p>
+            <a href="${r.item.url}">Visit Page</a>
+          </div>`;
+      });
+    });
+  </script>
+</body>
+</html>
