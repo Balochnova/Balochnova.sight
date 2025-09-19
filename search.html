@@ -3,122 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Balochnova.ai - Search</title>
+  <title>Search - Balochnova.ai</title>
   <style>
     body {
-      font-family: 'Poppins', sans-serif;
-      text-align: center;
-      background: linear-gradient(135deg, #2F80ED, #9B51E0);
-      margin: 0;
-      padding: 50px;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom right, #2F80ED, #9B51E0);
       color: white;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
-
-    .search-box {
-      margin: 20px auto;
-      max-width: 600px;
       display: flex;
-      background: white;
-      border-radius: 50px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
     }
-
-    .search-box input {
-      flex: 1;
-      padding: 15px 20px;
+    h1 {
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+    input {
+      width: 320px;
+      max-width: 90%;
+      padding: 12px;
+      border-radius: 25px;
       border: none;
       outline: none;
-      font-size: 1rem;
+      font-size: 16px;
     }
-
-    .search-box button {
-      background: #2F80ED;
-      color: white;
+    button {
+      margin-top: 15px;
+      padding: 10px 25px;
+      border-radius: 25px;
       border: none;
-      padding: 0 25px;
+      background: white;
+      color: #2F80ED;
+      font-size: 16px;
       cursor: pointer;
       transition: 0.3s;
-      font-size: 1rem;
     }
-
-    .search-box button:hover {
-      background: #9B51E0;
+    button:hover {
+      background: #f2f2f2;
     }
-
-    #results {
-      margin-top: 30px;
-      text-align: left;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .result-item {
-      background: rgba(255, 255, 255, 0.9);
-      color: #333;
-      padding: 15px;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-      transition: 0.3s;
-    }
-
-    .result-item:hover {
-      transform: translateY(-3px);
-      background: #f9f9f9;
-    }
-
-    .result-item a {
-      text-decoration: none;
-      color: #2F80ED;
-      font-weight: bold;
-      font-size: 1.1rem;
+    .back-btn {
+      margin-top: 25px;
+      font-size: 14px;
+      color: white;
+      text-decoration: underline;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <h1>🔍 Search Balochnova.ai</h1>
+  <h1>Search Balochnova.ai 🔍</h1>
+  <input type="text" id="searchBox" placeholder="Search AI tools, designs, automation...">
+  <button onclick="doSearch()">Search</button>
 
-  <div class="search-box">
-    <input type="text" id="searchInput" placeholder="Type to search...">
-    <button onclick="searchSite()">Search</button>
-  </div>
-
-  <div id="results"></div>
+  <div class="back-btn" onclick="goBack()">⬅ Back to Home</div>
 
   <script>
-    // Tumhari website ka index (jitne pages hain unka link aur title yahan add karna hoga)
-    const pages = [
-      { title: "Home", url: "https://balochnova.github.io/Balochnova.sight/" },
-      { title: "About Us", url: "https://balochnova.github.io/Balochnova.sight/about.html" },
-      { title: "Services", url: "https://balochnova.github.io/Balochnova.sight/services.html" },
-      { title: "Contact", url: "https://balochnova.github.io/Balochnova.sight/contact.html" },
-      { title: "Search", url: "https://balochnova.github.io/Balochnova.sight/search.html" }
-    ];
-
-    function searchSite() {
-      let query = document.getElementById("searchInput").value.toLowerCase();
-      let resultsDiv = document.getElementById("results");
-      resultsDiv.innerHTML = "";
-
-      let results = pages.filter(page => page.title.toLowerCase().includes(query));
-
-      if (results.length > 0) {
-        results.forEach(r => {
-          let item = document.createElement("div");
-          item.classList.add("result-item");
-          item.innerHTML = `<a href="${r.url}" target="_blank">${r.title}</a>`;
-          resultsDiv.appendChild(item);
-        });
+    function doSearch() {
+      let query = document.getElementById('searchBox').value;
+      if(query.trim() === "") {
+        alert("Please enter something to search!");
       } else {
-        resultsDiv.innerHTML = "<p>No results found 😢</p>";
+        // Abhi ke liye Google search use ho raha hai
+        window.open("https://www.google.com/search?q=" + encodeURIComponent(query), "_blank");
       }
+    }
+    function goBack() {
+      window.location.href = "index.html";
     }
   </script>
 </body>
