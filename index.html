@@ -3,80 +3,260 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Balochnova.ai</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" type="image/png" href="logo.png">
+  <title>Balochnova.ai | AI-powered Smart Search Engine</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Balochnova.ai - Innovating the future with Artificial Intelligence, Web Technologies, and Smart Search Solutions.">
+  <meta name="keywords" content="AI, Artificial Intelligence, Smart Search, Web Development, Tech Consulting, Balochnova.ai">
+  <meta name="author" content="Balochnova.ai">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Balochnova.ai | AI-powered Smart Search Engine">
+  <meta property="og:description" content="Discover cutting-edge AI solutions, web development, and smart search with Balochnova.ai.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://balochnova.github.io/Balochnova.sight/">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f9f9f9;
+      --text: #333;
+      --card: #fff;
+      --header-bg: linear-gradient(90deg, #2f80ed, #9b51e0);
+      --btn: #2f80ed;
+      --btn-hover: #1c5fc1;
+    }
+
+    body.dark {
+      --bg: #121212;
+      --text: #f1f1f1;
+      --card: #1e1e1e;
+      --header-bg: linear-gradient(90deg, #000000, #333333);
+      --btn: #9b51e0;
+      --btn-hover: #6d39a8;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    header {
+      background: var(--header-bg);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li {
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+
+    nav ul li:hover {
+      color: #ffe082;
+    }
+
+    /* Dark Mode Toggle Button */
+    .toggle-btn {
+      cursor: pointer;
+      background: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s;
+    }
+
+    body.dark .toggle-btn {
+      background: #444;
+      color: #fff;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background: linear-gradient(to bottom right, #2f80ed, #9b51e0);
+      color: white;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .search-container {
+      display: flex;
+      justify-content: center;
+      max-width: 500px;
+      margin: 20px auto;
+      background: white;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    body.dark .search-container {
+      background: #222;
+    }
+
+    .search-container input {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      outline: none;
+    }
+
+    .search-container button {
+      background: var(--btn);
+      border: none;
+      padding: 12px 20px;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .search-container button:hover {
+      background: var(--btn-hover);
+    }
+
+    .btn-explore {
+      background: orange;
+      color: white;
+      border: none;
+      padding: 14px 35px;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 20px;
+    }
+
+    .btn-explore:hover {
+      background: darkorange;
+    }
+
+    section {
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .service-card {
+      background: var(--card);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    body.dark .service-card {
+      box-shadow: 0 4px 10px rgba(255,255,255,0.1);
+    }
+
+    footer {
+      background: #111;
+      color: #bbb;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+  </style>
 </head>
 <body>
+
   <!-- Header -->
   <header>
-    <nav class="navbar">
-      <div class="brand">Balochnova.ai</div>
-      <ul class="nav-links">
+    <div class="logo">Balochnova.ai</div>
+    <nav>
+      <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
+    <button class="toggle-btn" onclick="toggleDarkMode()">🌙</button>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section id="home" class="hero">
-    <div class="hero-content">
-      <h1>Welcome to Balochnova.ai</h1>
-      <p>Your AI-powered Smart Search Engine</p>
-      <div class="search-container">
-        <input type="text" placeholder="Search anything...">
-        <button>Search</button>
-      </div>
-      <button class="btn-explore">🚀 Explore Now</button>
+    <h1>Welcome to Balochnova.ai</h1>
+    <p>Your AI-powered Smart Search Engine</p>
+
+    <div class="search-container">
+      <input type="text" placeholder="Search anything...">
+      <button>Search</button>
     </div>
+
+    <button class="btn-explore" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
+      🚀 Explore Now
+    </button>
   </section>
 
-  <!-- About Section -->
-  <section id="about" class="about">
+  <!-- About -->
+  <section id="about">
     <h2>About Us</h2>
-    <p>
-      At <strong>Balochnova.ai</strong>, we are committed to creating intelligent and innovative solutions 
-      that empower businesses and individuals. Our mission is to combine AI with creativity to 
-      build tools that shape the future.
-    </p>
+    <p>Balochnova.ai delivers cutting-edge AI solutions, modern web technologies, and smart tools that empower businesses and individuals.</p>
   </section>
 
-  <!-- Services Section -->
-  <section id="services" class="services">
+  <!-- Services -->
+  <section id="services">
     <h2>Our Services</h2>
-    <div class="service-cards">
-      <div class="card">
-        <h3>🤖 AI Solutions</h3>
-        <p>From smart automation to data-driven insights, we deliver next-gen AI services.</p>
-      </div>
-      <div class="card">
-        <h3>💻 Web Development</h3>
-        <p>Modern, fast, and responsive websites tailored to your needs and business goals.</p>
-      </div>
-      <div class="card">
-        <h3>🚀 Innovation</h3>
-        <p>We bring futuristic ideas to life with a blend of technology and creativity.</p>
-      </div>
+    <div class="services">
+      <div class="service-card"><h3>AI Solutions</h3><p>Custom AI tools to help businesses grow.</p></div>
+      <div class="service-card"><h3>Web Development</h3><p>Modern responsive websites.</p></div>
+      <div class="service-card"><h3>Tech Consulting</h3><p>Expert guidance on new technologies.</p></div>
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="contact">
+  <!-- Contact -->
+  <section id="contact">
     <h2>Contact Us</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea placeholder="Your Message" rows="5" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
+    <p>Email: <a href="mailto:info@balochnova.ai">info@balochnova.ai</a></p>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>© 2025 Balochnova.ai | All Rights Reserved</p>
+    © 2025 Balochnova.ai | All Rights Reserved
   </footer>
+
+  <!-- Script -->
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark");
+      const btn = document.querySelector(".toggle-btn");
+      if (document.body.classList.contains("dark")) {
+        btn.textContent = "☀️";
+      } else {
+        btn.textContent = "🌙";
+      }
+    }
+  </script>
 </body>
 </html>
