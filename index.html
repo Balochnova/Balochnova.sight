@@ -5,17 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Balochnova.ai</title>
   <style>
-    /* RESET */
-    * {margin: 0; padding: 0; box-sizing: border-box;}
-
     body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #2f80ed, #9b51e0);
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #2f80ed, #9b51e0);
       color: white;
       transition: background 0.3s, color 0.3s;
     }
-
-    /* HEADER */
+    body.dark {
+      background: #121212;
+      color: #eee;
+    }
     header {
       display: flex;
       justify-content: space-between;
@@ -23,206 +23,134 @@
       padding: 15px 30px;
       background: rgba(0,0,0,0.2);
     }
-
     header h1 {
       font-size: 1.5rem;
-      font-weight: bold;
+      margin: 0;
     }
-
     nav a {
-      margin-left: 20px;
+      margin: 0 15px;
       text-decoration: none;
       color: white;
       font-weight: bold;
     }
-
-    /* DARK MODE */
-    .dark-mode {
-      background: #121212;
-      color: #eee;
+    nav a:hover {
+      text-decoration: underline;
     }
-
-    .dark-mode header {
-      background: rgba(255,255,255,0.05);
+    .dark-toggle {
+      background: none;
+      border: 2px solid white;
+      border-radius: 20px;
+      padding: 5px 15px;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
     }
-
-    /* HERO */
     .hero {
       text-align: center;
-      padding: 60px 20px;
+      padding: 80px 20px 40px;
     }
-
     .hero h2 {
       font-size: 2.5rem;
-      margin-bottom: 10px;
+      animation: fadeInDown 1s;
     }
-
     .hero p {
       font-size: 1.2rem;
-      margin-bottom: 30px;
+      margin-top: 10px;
+      animation: fadeIn 2s;
     }
-
-    /* SEARCH BAR */
-    .search-container {
-      max-width: 500px;
-      margin: 0 auto 20px;
-      display: flex;
-      border-radius: 50px;
-      overflow: hidden;
-      background: white;
-    }
-
-    .search-container input {
-      flex: 1;
-      padding: 12px 15px;
-      border: none;
-      outline: none;
-      font-size: 16px;
-      color: #333;
-    }
-
-    .search-container button {
-      background: orange;
-      border: none;
-      color: white;
-      padding: 12px 20px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    /* RESULTS */
-    #results {
+    /* Google search box wrapper */
+    .search-box {
+      margin: 30px auto;
       max-width: 600px;
-      margin: 20px auto;
-      padding: 15px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 10px;
-      font-size: 1rem;
-      text-align: left;
+      animation: fadeInUp 1.5s;
     }
-
-    /* EXPLORE BTN */
     .btn-explore {
       display: inline-block;
-      margin-top: 15px;
+      margin-top: 20px;
       background: orange;
-      padding: 12px 25px;
+      color: white;
+      border: none;
+      padding: 15px 30px;
       border-radius: 30px;
       font-size: 18px;
-      font-weight: bold;
-      color: white;
       cursor: pointer;
       transition: 0.3s;
     }
-
     .btn-explore:hover {
       background: darkorange;
-      transform: scale(1.05);
     }
-
-    /* FOOTER */
-    footer {
-      margin-top: 50px;
-      padding: 20px;
+    section {
+      padding: 60px 20px;
       text-align: center;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
       background: rgba(0,0,0,0.2);
       font-size: 14px;
+    }
+    /* Animations */
+    @keyframes fadeInDown {
+      from {opacity: 0; transform: translateY(-20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
     }
   </style>
 </head>
 <body>
-
-  <!-- HEADER -->
   <header>
     <h1>Balochnova.ai</h1>
     <nav>
-      <a href="#home">Home</a>
+      <a href="#">Home</a>
       <a href="#about">About</a>
       <a href="#services">Services</a>
       <a href="#contact">Contact</a>
-      <button onclick="toggleDarkMode()">🌙 Dark</button>
+      <button class="dark-toggle" onclick="toggleDark()">🌙 Dark</button>
     </nav>
   </header>
 
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <h2>Welcome to <span style="color:yellow">Balochnova.ai</span></h2>
+  <div class="hero">
+    <h2>Welcome to Balochnova.ai</h2>
     <p>Your AI-powered Smart Search Engine</p>
 
-    <!-- SEARCH BAR -->
-    <div class="search-container">
-      <input type="text" id="searchInput" placeholder="Type to search...">
-      <button onclick="search()">Search</button>
+    <!-- Google Search Box -->
+    <div class="search-box">
+      <script async src="https://cse.google.com/cse.js?cx=4034c5603ee604dab"></script>
+      <div class="gcse-search"></div>
     </div>
 
-    <!-- RESULTS -->
-    <div id="results"></div>
-
-    <!-- EXPLORE BTN -->
     <button class="btn-explore">🚀 Explore Now</button>
-  </section>
+  </div>
 
-  <!-- ABOUT -->
-  <section id="about" class="hero">
+  <section id="about">
     <h2>About Us</h2>
-    <p>Balochnova.ai is dedicated to delivering futuristic AI solutions, smart search, and innovative web technologies for businesses and individuals worldwide.</p>
+    <p>Balochnova.ai is dedicated to delivering futuristic AI solutions, smart search, and web technologies to empower businesses and individuals worldwide.</p>
   </section>
 
-  <!-- SERVICES -->
-  <section id="services" class="hero">
+  <section id="services">
     <h2>Our Services</h2>
-    <p>⚡ AI Solutions | 🌐 Web Development | 📊 Smart Tools | 🚀 Digital Growth</p>
+    <p>✔ AI-powered Search <br> ✔ Web Development <br> ✔ Automation Tools <br> ✔ Digital Innovation</p>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="hero">
+  <section id="contact">
     <h2>Contact Us</h2>
     <p>Email: support@balochnova.ai</p>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     © 2025 Balochnova.ai | All Rights Reserved
   </footer>
 
-  <!-- SCRIPT -->
   <script>
-    // Dummy Data for Local Search
-    const data = [
-      { title: "YouTube", url: "https://youtube.com", description: "Watch and share videos online." },
-      { title: "Facebook", url: "https://facebook.com", description: "Connect with friends and the world." },
-      { title: "Google", url: "https://google.com", description: "Search the world's information." },
-      { title: "Balochnova Services", url: "#services", description: "AI solutions, web technologies and more." },
-      { title: "About Balochnova", url: "#about", description: "Learn more about Balochnova.ai" }
-    ];
-
-    function search() {
-      let input = document.getElementById("searchInput").value.toLowerCase();
-      let resultsDiv = document.getElementById("results");
-      resultsDiv.innerHTML = "";
-
-      if (input.trim() === "") {
-        resultsDiv.innerHTML = "<p>Please type something to search.</p>";
-        return;
-      }
-
-      let results = data.filter(item =>
-        item.title.toLowerCase().includes(input) ||
-        item.description.toLowerCase().includes(input)
-      );
-
-      if (results.length > 0) {
-        results.forEach(item => {
-          resultsDiv.innerHTML += `<p><a href="${item.url}" target="_blank" style="color:yellow;font-weight:bold;">${item.title}</a> - ${item.description}</p>`;
-        });
-      } else {
-        resultsDiv.innerHTML = "<p>No results found</p>";
-      }
-    }
-
-    // Dark Mode Toggle
-    function toggleDarkMode() {
-      document.body.classList.toggle("dark-mode");
+    function toggleDark() {
+      document.body.classList.toggle("dark");
     }
   </script>
 </body>
