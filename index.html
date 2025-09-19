@@ -4,158 +4,103 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Balochnova.ai – AI Powered Smart Search</title>
-
-  <!-- ✅ SEO Meta -->
-  <meta name="description" content="Balochnova.ai – AI-powered smart search engine, futuristic design, and modern technology solutions.">
-  <meta name="keywords" content="AI, Smart Search, Artificial Intelligence, Web, Technology, Balochnova">
-  <meta name="author" content="Balochnova.ai">
-  <meta property="og:title" content="Balochnova.ai – AI Powered Smart Search">
-  <meta property="og:description" content="Explore the future with AI-powered smart search and modern technology solutions.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://balochnova.github.io/Balochnova/">
-  <meta property="og:image" content="https://balochnova.github.io/Balochnova/logo.png">
-
   <style>
-    /* 🌙 Dark + Light Colors */
-    :root {
-      --light-bg: linear-gradient(135deg, #2f80ed, #9b51e0);
-      --dark-bg: linear-gradient(135deg, #0f0f1a, #1a1a2e);
-      --light-text: #fff;
-      --dark-text: #eee;
-      --accent: #ff9800;
-    }
-
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: var(--light-bg);
-      color: var(--light-text);
-      transition: background 0.5s, color 0.5s;
-    }
-    body.dark {
-      background: var(--dark-bg);
-      color: var(--dark-text);
+      background: linear-gradient(135deg, #2f80ed, #9b51e0);
+      color: white;
+      transition: 0.3s;
     }
 
-    /* Navbar */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 40px;
-      background: rgba(0,0,0,0.25);
+      padding: 15px 30px;
+      background: rgba(0,0,0,0.2);
+      backdrop-filter: blur(5px);
       position: sticky;
       top: 0;
       z-index: 1000;
-      backdrop-filter: blur(6px);
     }
-    header h1 { font-size: 1.5rem; }
+    header h1 { margin: 0; font-size: 1.5rem; }
     nav a {
       margin-left: 20px;
       text-decoration: none;
       color: white;
       font-weight: bold;
-      transition: 0.3s;
     }
-    nav a:hover { color: var(--accent); }
+    nav a:hover { color: orange; }
 
     .toggle-btn {
       margin-left: 20px;
       background: transparent;
       border: 2px solid white;
       color: white;
-      padding: 8px 15px;
+      padding: 6px 15px;
       border-radius: 20px;
       cursor: pointer;
-      transition: 0.3s;
     }
-    .toggle-btn:hover { background: white; color: black; }
 
-    /* Hero */
     .hero {
       text-align: center;
-      padding: 100px 20px;
-      animation: fadeIn 2s ease;
+      padding: 80px 20px;
     }
-    .hero h2 { font-size: 3rem; margin-bottom: 15px; animation: slideDown 1.5s ease; }
-    .hero p { font-size: 1.3rem; margin-bottom: 40px; }
+    .hero h2 { font-size: 2.5rem; margin-bottom: 10px; }
+    .hero p { font-size: 1.2rem; margin-bottom: 30px; }
 
-    /* 🚀 Modern Search */
+    /* ✅ Search Box */
     .search-box {
-      position: relative;
       max-width: 600px;
-      margin: 0 auto 30px;
+      margin: 0 auto;
+      display: flex;
       background: white;
       border-radius: 50px;
       overflow: hidden;
-      display: flex;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-      transition: transform 0.3s;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     }
     .search-box input {
       flex: 1;
       border: none;
-      padding: 15px 20px;
+      padding: 14px 20px;
       font-size: 16px;
       outline: none;
     }
     .search-box button {
-      background: var(--accent);
+      background: orange;
       border: none;
       color: white;
-      padding: 15px 30px;
+      padding: 14px 25px;
       font-size: 16px;
       cursor: pointer;
-      transition: 0.3s;
     }
     .search-box button:hover { background: darkorange; }
 
-    /* Instant Results */
+    /* ✅ Search Results */
     .results {
       max-width: 600px;
       margin: 20px auto;
-      background: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.95);
       color: black;
       border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
       padding: 15px;
       display: none;
-      animation: fadeIn 0.5s ease;
     }
     .results p { margin: 8px 0; }
 
-    /* Sections */
-    section {
-      padding: 80px 20px;
-      text-align: center;
-      max-width: 1000px;
-      margin: auto;
-    }
-    section h3 { font-size: 2rem; margin-bottom: 20px; }
-
     .btn {
-      display: inline-block;
       margin-top: 20px;
-      background: var(--accent);
+      background: orange;
       color: white;
       padding: 12px 25px;
       border-radius: 30px;
       text-decoration: none;
       font-weight: bold;
-      transition: 0.3s;
+      display: inline-block;
     }
-    .btn:hover { background: darkorange; transform: scale(1.05); }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: rgba(0,0,0,0.3);
-      margin-top: 50px;
-    }
-
-    /* Animations */
-    @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
-    @keyframes slideDown { from {transform: translateY(-50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
+    .btn:hover { background: darkorange; }
   </style>
 </head>
 <body>
@@ -171,12 +116,12 @@
     </nav>
   </header>
 
-  <!-- 🌟 Hero -->
+  <!-- ✅ Hero Section -->
   <section id="home" class="hero">
     <h2>Welcome to Balochnova.ai</h2>
     <p>Your AI-powered Smart Search Engine</p>
 
-    <!-- 🔍 Smart Search -->
+    <!-- 🔍 Search Box -->
     <div class="search-box">
       <input type="text" id="searchInput" placeholder="Type to search...">
       <button onclick="performSearch()">Search</button>
@@ -186,44 +131,54 @@
     <a href="#about" class="btn">🚀 Explore Now</a>
   </section>
 
-  <!-- ℹ️ About -->
-  <section id="about">
-    <h3>About Us</h3>
+  <!-- ✅ About Section -->
+  <section id="about" class="hero">
+    <h2>About Us</h2>
     <p>Balochnova.ai is dedicated to delivering futuristic AI solutions, smart search, and web technologies to empower businesses and individuals worldwide.</p>
   </section>
 
-  <!-- 🛠 Services -->
-  <section id="services">
-    <h3>Our Services</h3>
+  <!-- ✅ Services Section -->
+  <section id="services" class="hero">
+    <h2>Our Services</h2>
     <p>🔹 AI-Powered Search Solutions <br> 🔹 Web & App Development <br> 🔹 Futuristic Tech Consulting</p>
   </section>
 
-  <!-- 📞 Contact -->
-  <section id="contact">
-    <h3>Contact Us</h3>
+  <!-- ✅ Contact Section -->
+  <section id="contact" class="hero">
+    <h2>Contact Us</h2>
     <p>📧 Email: support@balochnova.ai</p>
     <p>🌐 Website: www.balochnova.ai</p>
   </section>
 
-  <!-- 📌 Footer -->
-  <footer>
+  <!-- ✅ Footer -->
+  <footer style="text-align:center; padding:20px; background:rgba(0,0,0,0.3);">
     © 2025 Balochnova.ai | All Rights Reserved
   </footer>
 
-  <!-- 🌙 Dark Mode + Search Script -->
+  <!-- ✅ JavaScript -->
   <script>
+    // Dark Mode
     function toggleDark() {
       document.body.classList.toggle("dark");
+      if(document.body.classList.contains("dark")) {
+        document.body.style.background = "linear-gradient(135deg,#0f0f1a,#1a1a2e)";
+        document.body.style.color = "#eee";
+      } else {
+        document.body.style.background = "linear-gradient(135deg, #2f80ed, #9b51e0)";
+        document.body.style.color = "white";
+      }
     }
 
-    // Fake Instant Search (Demo Data)
+    // Sample Data
     const data = [
       "Artificial Intelligence",
       "AI-powered Search",
       "Smart Web Development",
       "Technology Solutions",
       "Balochnova Services",
-      "Futuristic Design"
+      "Futuristic Design",
+      "Dark Mode Website",
+      "SEO Optimized Pages"
     ];
 
     function performSearch() {
@@ -245,7 +200,7 @@
       resultsBox.style.display = "block";
     }
 
-    // Instant Search while typing
+    // Live Search
     document.getElementById("searchInput").addEventListener("input", performSearch);
   </script>
 </body>
