@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Balochnova.ai</title>
+  <title>Balochnova.sight</title>
+  <meta name="description" content="Balochnova.sight - AI powered smart search engine.">
   <style>
     body {
       margin: 0;
@@ -21,20 +22,20 @@
       justify-content: space-between;
       align-items: center;
       padding: 15px 30px;
-      background: rgba(0,0,0,0.2);
+      background: rgba(0,0,0,0.3);
     }
     header h1 {
-      font-size: 1.5rem;
       margin: 0;
+      font-size: 1.6rem;
     }
     nav a {
-      margin: 0 15px;
+      margin: 0 12px;
       text-decoration: none;
       color: white;
       font-weight: bold;
     }
     nav a:hover {
-      text-decoration: underline;
+      color: #ffd700;
     }
     .dark-toggle {
       background: none;
@@ -51,6 +52,7 @@
     }
     .hero h2 {
       font-size: 2.5rem;
+      margin-bottom: 10px;
       animation: fadeInDown 1s;
     }
     .hero p {
@@ -58,15 +60,20 @@
       margin-top: 10px;
       animation: fadeIn 2s;
     }
-    /* Google search box wrapper */
     .search-box {
       margin: 30px auto;
-      max-width: 600px;
+      max-width: 700px;
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       animation: fadeInUp 1.5s;
     }
+    .gcse-search {
+      width: 100%;
+    }
     .btn-explore {
-      display: inline-block;
-      margin-top: 20px;
+      margin-top: 25px;
       background: orange;
       color: white;
       border: none;
@@ -86,10 +93,9 @@
     footer {
       text-align: center;
       padding: 20px;
-      background: rgba(0,0,0,0.2);
+      background: rgba(0,0,0,0.3);
       font-size: 14px;
     }
-    /* Animations */
     @keyframes fadeInDown {
       from {opacity: 0; transform: translateY(-20px);}
       to {opacity: 1; transform: translateY(0);}
@@ -106,7 +112,7 @@
 </head>
 <body>
   <header>
-    <h1>Balochnova.ai</h1>
+    <h1>Balochnova.sight</h1>
     <nav>
       <a href="#">Home</a>
       <a href="#about">About</a>
@@ -117,7 +123,7 @@
   </header>
 
   <div class="hero">
-    <h2>Welcome to Balochnova.ai</h2>
+    <h2>Welcome to Balochnova.sight</h2>
     <p>Your AI-powered Smart Search Engine</p>
 
     <!-- Google Search Box -->
@@ -131,7 +137,7 @@
 
   <section id="about">
     <h2>About Us</h2>
-    <p>Balochnova.ai is dedicated to delivering futuristic AI solutions, smart search, and web technologies to empower businesses and individuals worldwide.</p>
+    <p>Balochnova.sight is dedicated to futuristic AI solutions, smart search, and web technologies to empower businesses and individuals worldwide.</p>
   </section>
 
   <section id="services">
@@ -145,7 +151,7 @@
   </section>
 
   <footer>
-    © 2025 Balochnova.ai | All Rights Reserved
+    © 2025 Balochnova.sight | All Rights Reserved
   </footer>
 
   <script>
