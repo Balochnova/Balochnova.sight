@@ -3,108 +3,136 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Balochnova.ai – AI Powered Smart Search</title>
+  <title>Balochnova.ai</title>
   <style>
+    /* RESET */
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+
     body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #2f80ed, #9b51e0);
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #2f80ed, #9b51e0);
       color: white;
-      transition: 0.3s;
+      transition: background 0.3s, color 0.3s;
     }
 
+    /* HEADER */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 15px 30px;
       background: rgba(0,0,0,0.2);
-      backdrop-filter: blur(5px);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
     }
-    header h1 { margin: 0; font-size: 1.5rem; }
+
+    header h1 {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
     nav a {
       margin-left: 20px;
       text-decoration: none;
       color: white;
       font-weight: bold;
     }
-    nav a:hover { color: orange; }
 
-    .toggle-btn {
-      margin-left: 20px;
-      background: transparent;
-      border: 2px solid white;
-      color: white;
-      padding: 6px 15px;
-      border-radius: 20px;
-      cursor: pointer;
+    /* DARK MODE */
+    .dark-mode {
+      background: #121212;
+      color: #eee;
     }
 
+    .dark-mode header {
+      background: rgba(255,255,255,0.05);
+    }
+
+    /* HERO */
     .hero {
       text-align: center;
-      padding: 80px 20px;
+      padding: 60px 20px;
     }
-    .hero h2 { font-size: 2.5rem; margin-bottom: 10px; }
-    .hero p { font-size: 1.2rem; margin-bottom: 30px; }
 
-    /* ✅ Search Box */
-    .search-box {
-      max-width: 600px;
-      margin: 0 auto;
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    /* SEARCH BAR */
+    .search-container {
+      max-width: 500px;
+      margin: 0 auto 20px;
       display: flex;
-      background: white;
       border-radius: 50px;
       overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      background: white;
     }
-    .search-box input {
+
+    .search-container input {
       flex: 1;
+      padding: 12px 15px;
       border: none;
-      padding: 14px 20px;
-      font-size: 16px;
       outline: none;
+      font-size: 16px;
+      color: #333;
     }
-    .search-box button {
+
+    .search-container button {
       background: orange;
       border: none;
       color: white;
-      padding: 14px 25px;
+      padding: 12px 20px;
       font-size: 16px;
       cursor: pointer;
     }
-    .search-box button:hover { background: darkorange; }
 
-    /* ✅ Search Results */
-    .results {
+    /* RESULTS */
+    #results {
       max-width: 600px;
       margin: 20px auto;
-      background: rgba(255,255,255,0.95);
-      color: black;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
       padding: 15px;
-      display: none;
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      font-size: 1rem;
+      text-align: left;
     }
-    .results p { margin: 8px 0; }
 
-    .btn {
-      margin-top: 20px;
+    /* EXPLORE BTN */
+    .btn-explore {
+      display: inline-block;
+      margin-top: 15px;
       background: orange;
-      color: white;
       padding: 12px 25px;
       border-radius: 30px;
-      text-decoration: none;
+      font-size: 18px;
       font-weight: bold;
-      display: inline-block;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
     }
-    .btn:hover { background: darkorange; }
+
+    .btn-explore:hover {
+      background: darkorange;
+      transform: scale(1.05);
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 50px;
+      padding: 20px;
+      text-align: center;
+      background: rgba(0,0,0,0.2);
+      font-size: 14px;
+    }
   </style>
 </head>
 <body>
-  <!-- ✅ Navbar -->
+
+  <!-- HEADER -->
   <header>
     <h1>Balochnova.ai</h1>
     <nav>
@@ -112,96 +140,90 @@
       <a href="#about">About</a>
       <a href="#services">Services</a>
       <a href="#contact">Contact</a>
-      <button class="toggle-btn" onclick="toggleDark()">🌙 Dark</button>
+      <button onclick="toggleDarkMode()">🌙 Dark</button>
     </nav>
   </header>
 
-  <!-- ✅ Hero Section -->
-  <section id="home" class="hero">
-    <h2>Welcome to Balochnova.ai</h2>
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <h2>Welcome to <span style="color:yellow">Balochnova.ai</span></h2>
     <p>Your AI-powered Smart Search Engine</p>
 
-    <!-- 🔍 Search Box -->
-    <div class="search-box">
+    <!-- SEARCH BAR -->
+    <div class="search-container">
       <input type="text" id="searchInput" placeholder="Type to search...">
-      <button onclick="performSearch()">Search</button>
+      <button onclick="search()">Search</button>
     </div>
-    <div id="results" class="results"></div>
 
-    <a href="#about" class="btn">🚀 Explore Now</a>
+    <!-- RESULTS -->
+    <div id="results"></div>
+
+    <!-- EXPLORE BTN -->
+    <button class="btn-explore">🚀 Explore Now</button>
   </section>
 
-  <!-- ✅ About Section -->
+  <!-- ABOUT -->
   <section id="about" class="hero">
     <h2>About Us</h2>
-    <p>Balochnova.ai is dedicated to delivering futuristic AI solutions, smart search, and web technologies to empower businesses and individuals worldwide.</p>
+    <p>Balochnova.ai is dedicated to delivering futuristic AI solutions, smart search, and innovative web technologies for businesses and individuals worldwide.</p>
   </section>
 
-  <!-- ✅ Services Section -->
+  <!-- SERVICES -->
   <section id="services" class="hero">
     <h2>Our Services</h2>
-    <p>🔹 AI-Powered Search Solutions <br> 🔹 Web & App Development <br> 🔹 Futuristic Tech Consulting</p>
+    <p>⚡ AI Solutions | 🌐 Web Development | 📊 Smart Tools | 🚀 Digital Growth</p>
   </section>
 
-  <!-- ✅ Contact Section -->
+  <!-- CONTACT -->
   <section id="contact" class="hero">
     <h2>Contact Us</h2>
-    <p>📧 Email: support@balochnova.ai</p>
-    <p>🌐 Website: www.balochnova.ai</p>
+    <p>Email: support@balochnova.ai</p>
   </section>
 
-  <!-- ✅ Footer -->
-  <footer style="text-align:center; padding:20px; background:rgba(0,0,0,0.3);">
+  <!-- FOOTER -->
+  <footer>
     © 2025 Balochnova.ai | All Rights Reserved
   </footer>
 
-  <!-- ✅ JavaScript -->
+  <!-- SCRIPT -->
   <script>
-    // Dark Mode
-    function toggleDark() {
-      document.body.classList.toggle("dark");
-      if(document.body.classList.contains("dark")) {
-        document.body.style.background = "linear-gradient(135deg,#0f0f1a,#1a1a2e)";
-        document.body.style.color = "#eee";
-      } else {
-        document.body.style.background = "linear-gradient(135deg, #2f80ed, #9b51e0)";
-        document.body.style.color = "white";
-      }
-    }
-
-    // Sample Data
+    // Dummy Data for Local Search
     const data = [
-      "Artificial Intelligence",
-      "AI-powered Search",
-      "Smart Web Development",
-      "Technology Solutions",
-      "Balochnova Services",
-      "Futuristic Design",
-      "Dark Mode Website",
-      "SEO Optimized Pages"
+      { title: "YouTube", url: "https://youtube.com", description: "Watch and share videos online." },
+      { title: "Facebook", url: "https://facebook.com", description: "Connect with friends and the world." },
+      { title: "Google", url: "https://google.com", description: "Search the world's information." },
+      { title: "Balochnova Services", url: "#services", description: "AI solutions, web technologies and more." },
+      { title: "About Balochnova", url: "#about", description: "Learn more about Balochnova.ai" }
     ];
 
-    function performSearch() {
-      let query = document.getElementById("searchInput").value.toLowerCase();
-      let resultsBox = document.getElementById("results");
-      resultsBox.innerHTML = "";
-      if(query.trim() === "") {
-        resultsBox.style.display = "none";
+    function search() {
+      let input = document.getElementById("searchInput").value.toLowerCase();
+      let resultsDiv = document.getElementById("results");
+      resultsDiv.innerHTML = "";
+
+      if (input.trim() === "") {
+        resultsDiv.innerHTML = "<p>Please type something to search.</p>";
         return;
       }
-      let results = data.filter(item => item.toLowerCase().includes(query));
-      if(results.length === 0) {
-        resultsBox.innerHTML = "<p>No results found</p>";
-      } else {
-        results.forEach(r => {
-          resultsBox.innerHTML += `<p>🔍 ${r}</p>`;
+
+      let results = data.filter(item =>
+        item.title.toLowerCase().includes(input) ||
+        item.description.toLowerCase().includes(input)
+      );
+
+      if (results.length > 0) {
+        results.forEach(item => {
+          resultsDiv.innerHTML += `<p><a href="${item.url}" target="_blank" style="color:yellow;font-weight:bold;">${item.title}</a> - ${item.description}</p>`;
         });
+      } else {
+        resultsDiv.innerHTML = "<p>No results found</p>";
       }
-      resultsBox.style.display = "block";
     }
 
-    // Live Search
-    document.getElementById("searchInput").addEventListener("input", performSearch);
+    // Dark Mode Toggle
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
   </script>
 </body>
 </html>
