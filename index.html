@@ -1,204 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Balochnova.sight</title>
   <style>
-    /* Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    /* --- Reset & base --- */
+    :root{
+      --bg1:#112a5a;
+      --bg2:#224a8a;
+      --accent:#ffcc00;
+      --glass: rgba(255,255,255,0.08);
+      --glass-2: rgba(255,255,255,0.04);
+      --btn-grad: linear-gradient(90deg,#ffcc00,#ff9b1a);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family: "Inter", "Segoe UI", Tahoma, Arial, sans-serif;
+      color:#fff;
+      background: linear-gradient(180deg,var(--bg1),var(--bg2));
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+      line-height:1.5;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
     }
 
-    body {
-      background: linear-gradient(135deg, #1e3c72, #2a5298);
-      color: white;
-      text-align: center;
-      line-height: 1.6;
+    /* --- NAV --- */
+    nav{
+      backdrop-filter: blur(6px);
+      background: linear-gradient(90deg, rgba(0,0,0,0.45), rgba(0,0,0,0.25));
+      padding:14px 6%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      position:sticky;
+      top:0;
+      z-index:999;
+      border-bottom:1px solid rgba(255,255,255,0.03);
+    }
+    .logo{
+      font-weight:800;
+      color:var(--accent);
+      font-size:1.25rem;
+      letter-spacing:0.3px;
+    }
+    .menu{display:flex;gap:22px;align-items:center}
+    .menu a{
+      color: #fff;
+      text-decoration:none;
+      font-weight:600;
+      opacity:0.95;
+      transition:all .18s ease;
+    }
+    .menu a:hover{color:var(--accent); transform:translateY(-2px)}
+
+    /* mobile menu button (hidden on desktop) */
+    .hamburger{display:none}
+
+    /* --- HERO --- */
+    .hero{
+      padding:72px 6% 48px;
+      text-align:center;
+      flex:0 0 auto;
+    }
+    .hero h1{
+      font-size:2.6rem;
+      margin-bottom:8px;
+      line-height:1.05;
+    }
+    .hero p{font-size:1.05rem; margin-bottom:26px; color:rgba(255,255,255,0.92)}
+
+    /* --- search box (Google CSE embedded inside) --- */
+    .search-wrap{
+      max-width:760px;
+      margin: 0 auto;
+      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.95));
+      border-radius:999px;
+      padding:10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      overflow:hidden;
+    }
+    /* ensure the embedded element fits */
+    .search-wrap .gcse-search{ width:100%; display:block; }
+
+    /* --- buttons under search --- */
+    .btn-row{
+      margin-top:24px;
+      display:flex;
+      gap:14px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    .btn{
+      background:var(--btn-grad);
+      color:#111;
+      padding:12px 22px;
+      border-radius:40px;
+      font-weight:700;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      box-shadow: 0 8px 20px rgba(34,77,120,0.25);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .btn:hover{ transform:translateY(-4px) scale(1.02); box-shadow: 0 16px 30px rgba(34,77,120,0.35) }
+
+    /* explore special size */
+    .btn.explore{ padding:14px 36px; margin-top:8px; display:inline-block; }
+
+    /* --- sections (cards) --- */
+    .content{
+      padding:36px 6%;
+      flex:1 0 auto;
+    }
+    .card{
+      background:var(--glass);
+      border-radius:14px;
+      padding:28px;
+      margin-bottom:22px;
+      box-shadow: 0 6px 20px rgba(8,18,40,0.18);
+    }
+    .card h2{ color:var(--accent); margin-bottom:12px; font-size:1.4rem; text-align:center }
+    .card p{ color:rgba(255,255,255,0.95); text-align:center; max-width:900px; margin:0 auto; line-height:1.6 }
+
+    /* services grid */
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:18px;
+      margin-top:14px;
+    }
+    .service{
+      background:var(--glass-2);
+      padding:18px;
+      border-radius:12px;
+      text-align:center;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .service:hover{ transform:translateY(-8px); box-shadow: 0 18px 30px rgba(10,30,80,0.18) }
+    .service h3{ margin-bottom:8px; color:var(--accent) }
+
+    /* contact */
+    .contact-list{ display:flex; flex-direction:column; gap:8px; align-items:center; font-weight:600; color:rgba(255,255,255,0.95) }
+
+    /* footer */
+    footer{
+      background: rgba(0,0,0,0.55);
+      padding:18px 6%;
+      text-align:center;
+      font-size:0.95rem;
+      border-top:1px solid rgba(255,255,255,0.03);
     }
 
-    /* Navbar */
-    nav {
-      background: rgba(0, 0, 0, 0.7);
-      padding: 15px 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    nav .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #ffcc00;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 25px;
-    }
-
-    nav ul li a {
-      text-decoration: none;
-      color: white;
-      font-size: 1rem;
-      transition: color 0.3s;
-    }
-
-    nav ul li a:hover {
-      color: #ffcc00;
-    }
-
-    /* Hero Section */
-    .hero {
-      padding: 80px 20px;
-    }
-
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
-    }
-
-    /* Search Box */
-    .search-box {
-      max-width: 600px;
-      margin: 20px auto;
-      background: white;
-      padding: 10px;
-      border-radius: 50px;
-      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    .gcse-search {
-      width: 100%;
-    }
-
-    /* Buttons */
-    .buttons {
-      margin-top: 30px;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .buttons a {
-      text-decoration: none;
-      background: #ffcc00;
-      color: black;
-      padding: 12px 25px;
-      border-radius: 30px;
-      font-weight: bold;
-      transition: 0.3s;
-      display: inline-block;
-    }
-
-    .buttons a:hover {
-      background: #ffa500;
-      transform: scale(1.05);
-    }
-
-    /* Sections */
-    section {
-      padding: 60px 20px;
-    }
-
-    #about, #services, #contact {
-      background: rgba(255, 255, 255, 0.1);
-      margin: 20px;
-      border-radius: 15px;
-      padding: 40px 20px;
-    }
-
-    h2 {
-      color: #ffcc00;
-      margin-bottom: 15px;
-    }
-
-    /* Footer */
-    footer {
-      background: rgba(0, 0, 0, 0.8);
-      padding: 20px;
-      margin-top: 40px;
-      font-size: 0.9rem;
+    /* small screens */
+    @media (max-width:720px){
+      .hero h1{ font-size:2rem }
+      nav{ padding:12px 4% }
+      .menu{gap:12px}
+      .hamburger{display:block; color:#fff; font-size:20px}
     }
   </style>
 </head>
 <body>
 
-  <!-- Navbar -->
+  <!-- NAV -->
   <nav>
     <div class="logo">Balochnova.sight</div>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    <div class="menu" id="menu">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </div>
   </nav>
 
-  <!-- Hero -->
-  <section class="hero" id="home">
-    <h1>Welcome to Balochnova.sight</h1>
-    <p>Your AI-powered Smart Search Engine</p>
+  <!-- HERO -->
+  <main>
+    <section class="hero" id="home">
+      <h1>Welcome to Balochnova.sight</h1>
+      <p>Your AI-powered Smart Search Engine — fast, clean and human-friendly.</p>
 
-    <!-- Google Search Box -->
-    <div class="search-box">
-      <script async src="https://cse.google.com/cse.js?cx=402781737f5f14c1d"></script>
-      <div class="gcse-search"></div>
-    </div>
+      <!-- SEARCH (Google CSE) -->
+      <div class="search-wrap" aria-hidden="false">
+        <!-- <<< YOUR CSE (already set) >>> -->
+        <script async src="https://cse.google.com/cse.js?cx=402781737f5f14c1d"></script>
+        <div class="gcse-search"></div>
+      </div>
 
-    <div class="buttons">
-      <a href="https://www.google.com" target="_blank">🌐 Google</a>
-      <a href="https://www.youtube.com" target="_blank">▶️ YouTube</a>
-      <a href="#explore">🚀 Explore Now</a>
-    </div>
-  </section>
+      <!-- ACTION BUTTONS -->
+      <div class="btn-row">
+        <a class="btn" href="https://www.google.com" target="_blank" rel="noopener">🌐 Google</a>
+        <a class="btn" href="https://www.youtube.com" target="_blank" rel="noopener">▶️ YouTube</a>
+      </div>
+      <div style="text-align:center;">
+        <a class="btn explore" href="#about">🚀 Explore Now</a>
+      </div>
+    </section>
 
-  <!-- About -->
-  <section id="about">
-    <h2>About Us</h2>
-    <p>
-      Balochnova.sight is your AI-powered smart search engine designed to make information accessible, fast, and reliable.
-      We aim to bring innovation and simplicity in the way you explore the web.
-    </p>
-  </section>
+    <!-- CONTENT AREA -->
+    <section class="content">
+      <div id="about" class="card">
+        <h2>About Us</h2>
+        <p>
+          Balochnova.sight is an AI-assisted search front-end built to make search fast, intuitive and pleasant.
+          We use Google's Programmable Search Engine to deliver reliable results, wrapped in a sleek, modern UI.
+        </p>
+      </div>
 
-  <!-- Services -->
-  <section id="services">
-    <h2>Our Services</h2>
-    <p>
-      ✔️ Smart Search with AI Integration <br>
-      ✔️ Fast & Accurate Results <br>
-      ✔️ Google & YouTube Direct Access <br>
-      ✔️ 24/7 Online Availability
-    </p>
-  </section>
+      <div id="services" class="card">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+          <div class="service">
+            <h3>AI Smart Search</h3>
+            <p>Faster, smarter queries with clean result presentation.</p>
+          </div>
+          <div class="service">
+            <h3>Web Exploration</h3>
+            <p>Discover websites, videos and resources seamlessly.</p>
+          </div>
+          <div class="service">
+            <h3>Analytics Ready</h3>
+            <p>Integrate analytics & tracking to understand your visitors.</p>
+          </div>
+          <div class="service">
+            <h3>24/7 Availability</h3>
+            <p>Hosted and ready – accessible to anyone, anywhere.</p>
+          </div>
+        </div>
+      </div>
 
-  <!-- Contact -->
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <p>
-      📧 Email: support@balochnova.sight <br>
-      📍 Location: Worldwide (Online)
-    </p>
-  </section>
+      <div id="contact" class="card">
+        <h2>Contact Us</h2>
+        <div class="contact-list">
+          <div>📧 support@balochnova.sight</div>
+          <div>📞 +92-300-1234567</div>
+          <div style="opacity:0.9;font-size:0.9rem">Follow us on social media for updates</div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer>
-    Balochnova.sight © 2025 | Powered by Google Search
+    Balochnova.sight © <span id="year"></span> · Powered by Google Search · <a href="#" style="color:var(--accent);text-decoration:none;margin-left:8px">Privacy</a>
   </footer>
 
+  <!-- small JS: smooth scroll + year -->
+  <script>
+    // smooth scrolling for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', function(e){
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target){
+          e.preventDefault();
+          target.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      });
+    });
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
