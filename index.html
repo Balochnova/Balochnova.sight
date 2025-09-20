@@ -3,122 +3,135 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Balochnova.sight - Smart Search</title>
+  <title>Balochnova.sight</title>
   <style>
-    body {
+    /* Reset */
+    * {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to bottom right, #1e3c72, #2a5298);
-      color: #fff;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: white;
+      text-align: center;
+      line-height: 1.6;
     }
 
     /* Navbar */
     nav {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 15px 5%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: #0d47a1;
-      padding: 15px 30px;
       position: sticky;
       top: 0;
       z-index: 1000;
     }
+
     nav .logo {
-      font-size: 20px;
+      font-size: 1.5rem;
       font-weight: bold;
+      color: #ffcc00;
     }
+
     nav ul {
       list-style: none;
       display: flex;
-      margin: 0;
-      padding: 0;
+      gap: 25px;
     }
-    nav ul li {
-      margin-left: 20px;
-    }
+
     nav ul li a {
       text-decoration: none;
-      color: #fff;
-      font-weight: 500;
-      transition: 0.3s;
+      color: white;
+      font-size: 1rem;
+      transition: color 0.3s;
     }
+
     nav ul li a:hover {
       color: #ffcc00;
     }
 
     /* Hero Section */
     .hero {
-      text-align: center;
-      padding: 100px 20px 60px;
-    }
-    .hero h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
-    }
-    .hero p {
-      font-size: 18px;
-      margin-bottom: 30px;
-      opacity: 0.9;
+      padding: 80px 20px;
     }
 
-    /* Search Bar */
-    .search-box {
-      background: #fff;
-      padding: 12px;
-      border-radius: 50px;
-      display: inline-block;
-      width: 90%;
-      max-width: 600px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
     }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    /* Search Box */
+    .search-box {
+      max-width: 600px;
+      margin: 20px auto;
+      background: white;
+      padding: 10px;
+      border-radius: 50px;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
     .gcse-search {
       width: 100%;
     }
 
     /* Buttons */
-    .btn {
-      display: inline-block;
-      margin: 15px 10px;
+    .buttons {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .buttons a {
+      text-decoration: none;
+      background: #ffcc00;
+      color: black;
       padding: 12px 25px;
       border-radius: 30px;
-      background: #ff9800;
-      color: #fff;
       font-weight: bold;
-      text-decoration: none;
       transition: 0.3s;
+      display: inline-block;
     }
-    .btn:hover {
-      background: #e68900;
-    }
-    .btn-alt {
-      background: #e91e63;
-    }
-    .btn-alt:hover {
-      background: #c2185b;
+
+    .buttons a:hover {
+      background: #ffa500;
+      transform: scale(1.05);
     }
 
     /* Sections */
     section {
       padding: 60px 20px;
-      text-align: center;
     }
-    section h2 {
-      margin-bottom: 20px;
-      font-size: 28px;
+
+    #about, #services, #contact {
+      background: rgba(255, 255, 255, 0.1);
+      margin: 20px;
+      border-radius: 15px;
+      padding: 40px 20px;
     }
-    section p {
-      max-width: 700px;
-      margin: 0 auto;
-      opacity: 0.9;
+
+    h2 {
+      color: #ffcc00;
+      margin-bottom: 15px;
     }
 
     /* Footer */
     footer {
-      background: #0d47a1;
-      text-align: center;
-      padding: 15px;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px;
       margin-top: 40px;
-      font-size: 14px;
+      font-size: 0.9rem;
     }
   </style>
 </head>
@@ -132,56 +145,47 @@
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="https://google.com" target="_blank">Google</a></li>
-      <li><a href="https://youtube.com" target="_blank">YouTube</a></li>
     </ul>
   </nav>
 
   <!-- Hero -->
-  <div class="hero" id="home">
+  <section class="hero" id="home">
     <h1>Welcome to Balochnova.sight</h1>
     <p>Your AI-powered Smart Search Engine</p>
 
+    <!-- Google Search Box -->
     <div class="search-box">
-      <script async src="https://cse.google.com/cse.js?cx=4027817375f14c1d"></script>
+      <script async src="https://cse.google.com/cse.js?cx=402781737f5f14c1d"></script>
       <div class="gcse-search"></div>
     </div>
 
-    <br>
-    <a href="#explore" class="btn">🚀 Explore Now</a>
-  </div>
+    <div class="buttons">
+      <a href="https://www.google.com" target="_blank">🌐 Google</a>
+      <a href="https://www.youtube.com" target="_blank">▶️ YouTube</a>
+      <a href="#explore">🚀 Explore Now</a>
+    </div>
+  </section>
 
-  <!-- About Section -->
+  <!-- About -->
   <section id="about">
     <h2>About Us</h2>
-    <p>
-      Balochnova.sight is your AI-powered smart search engine designed to make finding 
-      information faster, easier, and smarter. Explore the internet with enhanced precision.
-    </p>
+    <p>Balochnova.sight is your AI-powered smart search engine designed to make information accessible, fast, and reliable. We aim to bring innovation and simplicity in the way you explore the web.</p>
   </section>
 
-  <!-- Services Section -->
+  <!-- Services -->
   <section id="services">
     <h2>Our Services</h2>
-    <p>
-      🔍 Smart Search | 📊 Data Insights | 🌐 Web Exploration | 🎥 Multimedia Discovery
-    </p>
+    <p>✔️ Smart Search with AI Integration <br>
+       ✔️ Fast & Accurate Results <br>
+       ✔️ Google & YouTube Direct Access <br>
+       ✔️ 24/7 Online Availability</p>
   </section>
 
-  <!-- Explore Section -->
-  <section id="explore">
-    <h2>Explore More</h2>
-    <p>
-      Use our Explore button to navigate and unlock powerful AI-based search tools 
-      and features designed for smarter browsing.
-    </p>
-    <a href="#home" class="btn-alt">⬆ Back to Top</a>
-  </section>
-
-  <!-- Contact Section -->
+  <!-- Contact -->
   <section id="contact">
     <h2>Contact Us</h2>
-    <p>Email: support@balochnova.ai<br>Phone: +92-300-1234567</p>
+    <p>📧 Email: support@balochnova.sight <br>
+       📍 Location: Worldwide (Online)</p>
   </section>
 
   <!-- Footer -->
